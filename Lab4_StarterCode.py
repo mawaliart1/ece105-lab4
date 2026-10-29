@@ -59,13 +59,12 @@ triangle(x) returns [3, 1, 0, 1, 3]
 """
 # Ramp: 0 on [-pi, 0), x on [0, pi); repeats every 2 pi
 def ramp(x):
-    # replace np.zeros_like(x) with np.where(...)
-    return np.zeros_like(x)
+    x = wrap(x)
+    return np.where(x < 0, 0.0, x)
 
-# Triangle: |x| on [-pi, pi); repeats every 2 pi
 def triangle(x):
-    # replace np.zeros_like(x) with np.where(...)
-    return np.zeros_like(x)
+    x = wrap(x)
+    return np.where(x < 0, -x, x)
 
 # M sample points on one period: cut [-pi, pi) into M equal pieces,
 # and take the middle of each (so no point falls on a jump)
