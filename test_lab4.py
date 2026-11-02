@@ -71,3 +71,15 @@ hand. Ideas (pick one, or your own):
 Name it test_something, run pytest, and see it pass. Then break your
 code on purpose (change a sign in fs): does your test catch it?
 """
+#my own test
+def test_fs_periodic():
+    x = np.array([0.0, 1.0, 2.0, 3.0])
+
+    a0 = 1.0
+    a = np.array([0.5, 0.3])
+    b = np.array([0.2, 0.4])
+
+    result1 = fs(x, a0, a, b)
+    result2 = fs(x + 2 * np.pi, a0, a, b)
+
+    assert result1 == pytest.approx(result2)
